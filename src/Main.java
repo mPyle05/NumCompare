@@ -1,15 +1,37 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        // Create a Scanner object to read user input
+        Scanner scanner = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        // Prompt the user to enter the first number
+        System.out.print("Enter the first number: ");
+        String input1 = scanner.nextLine();
+
+        // Prompt the user to enter the second number
+        System.out.print("Enter the second number: ");
+        String input2 = scanner.nextLine();
+
+        // Try parsing the inputs as integers
+        try {
+            int num1 = Integer.parseInt(input1);
+            int num2 = Integer.parseInt(input2);
+
+            // Compare the two numbers
+            if (num1 == num2) {
+                System.out.println("The numbers are equal.");
+            } else if (num1 < num2) {
+                System.out.println("The first number is less than the second number.");
+            } else {
+                System.out.println("The second number is less than the first number.");
+            }
+        } catch (NumberFormatException e) {
+            // Handle the case where inputs are not valid numbers
+            System.out.println("Invalid input. Please enter valid numbers.");
         }
+
+        // Close the scanner to prevent resource leak
+        scanner.close();
     }
 }
